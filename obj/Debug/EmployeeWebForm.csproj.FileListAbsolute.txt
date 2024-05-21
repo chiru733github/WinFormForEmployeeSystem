@@ -1,0 +1,10 @@
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\bin\Debug\EmployeeWebForm.exe.config
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\bin\Debug\EmployeeWebForm.exe
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\bin\Debug\EmployeeWebForm.pdb
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\obj\Debug\EmployeeWebForm.csproj.AssemblyReference.cache
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\obj\Debug\EmployeeWebForm.Form1.resources
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\obj\Debug\EmployeeWebForm.Properties.Resources.resources
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\obj\Debug\EmployeeWebForm.csproj.GenerateResource.cache
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\obj\Debug\EmployeeWebForm.csproj.CoreCompileInputs.cache
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\obj\Debug\EmployeeWebForm.exe
+C:\Users\pagad\source\repos\EmployeeWebForm\EmployeeWebForm\obj\Debug\EmployeeWebForm.pdb
