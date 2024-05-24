@@ -19,54 +19,15 @@ namespace EmployeeWebForm
             InitializeComponent();
         }
 
-        
-
-        private void button2_Click(object sender, EventArgs e)
+        private void Insert_Click(object sender, EventArgs e)
         {
             try
             {
                 conn.Open();
-                SqlCommand Updatecmd = new SqlCommand("Update Employee_Table set EmployeeName='"+textBox2.Text+"',Address='"+textBox3.Text+"',Salary="+textBox4.Text+",Role='"+comboBox1.Text+"' where EmployeeId="+textBox1.Text,conn);
-                Updatecmd.ExecuteNonQuery();
-                MessageBox.Show("Update Data Successfully");
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-            finally 
-            {
-                conn.Close();
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                conn.Open();
-                SqlCommand Insertcmd = new SqlCommand("Insert into Employee_Table values("+textBox1.Text+",'"+textBox2.Text+"','"+textBox3.Text+"',"+textBox4.Text+",'"+comboBox1.Text+"')",conn);
+                SqlCommand Insertcmd = new SqlCommand("exec Insertdata " + textBox1.Text + ",'" + textBox2.Text + "','" + textBox3.Text + "'," + textBox4.Text + ",'" + comboBox1.Text + "'", conn);
                 Insertcmd.ExecuteNonQuery();
                 MessageBox.Show("Insert Data SuccessFully");
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                conn.Open();
-                SqlCommand Deletecmd = new SqlCommand("Delete from Employee_Table where EmployeeId="+textBox1.Text, conn);
-                Deletecmd.ExecuteNonQuery();
-                MessageBox.Show("Delete SuccessFully");
+                GetEmployeeList();
             }
             catch (Exception ex)
             {
@@ -78,9 +39,66 @@ namespace EmployeeWebForm
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Update_Click(object sender, EventArgs e)
         {
-            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text= comboBox1.Text ="";
+            try
+            {
+                conn.Open();
+                SqlCommand Updatecmd = new SqlCommand("exec Update_SP " + textBox1.Text + ",'" + textBox2.Text + "','" + textBox3.Text + "'," + textBox4.Text + ",'" + comboBox1.Text + "'", conn);
+                Updatecmd.ExecuteNonQuery();
+                MessageBox.Show("Updated Data Successfully");
+                GetEmployeeList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand Deletecmd = new SqlCommand("exec Delete_SP " + textBox1.Text, conn);
+                Deletecmd.ExecuteNonQuery();
+                MessageBox.Show("Delete SuccessFully");
+                GetEmployeeList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = comboBox1.Text = "";
+        }
+
+        private void Fetch_Click(object sender, EventArgs e)
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter("EXEC FETCH_SP "+textBox1.Text, conn);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dgv1.AutoGenerateColumns = false;
+            dgv1.DataSource = dataTable;
+        }
+
+        void GetEmployeeList()
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter("EXEC SELECTALL_SP", conn);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dgv1.AutoGenerateColumns = false;
+            dgv1.DataSource = dataTable;
+        }    
     }
 }
